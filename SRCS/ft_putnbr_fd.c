@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amasnaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 19:00:37 by amasnaou          #+#    #+#             */
-/*   Updated: 2021/11/24 19:00:39 by amasnaou         ###   ########.fr       */
+/*   Created: 2021/11/12 22:20:16 by amasnaou          #+#    #+#             */
+/*   Updated: 2021/11/12 22:20:17 by amasnaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	nb_car;
 
-#include "./SRCS/libft.h"
-
-# include<stdarg.h>
-# include<stdio.h>
-# include<stdlib.h>
-# include<unistd.h>
-# include<string.h>
-# include<strings.h>
-
-int	ft_printf(const char *format, ...);
-
-#endif
+	if (n == -2147483648)
+		write (fd, "-2147483648", 11);
+	else if (n == 2147483647)
+		write (fd, "2147483647", 10);
+	else if (n < 0)
+	{
+		write (fd, "-", 1);
+		ft_putnbr_fd(-n, fd);
+	}
+	else if (n < 10)
+	{
+		nb_car = n + 48;
+		write (fd, &nb_car, 1);
+	}
+	else
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+}

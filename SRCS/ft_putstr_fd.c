@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amasnaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 19:00:37 by amasnaou          #+#    #+#             */
-/*   Updated: 2021/11/24 19:00:39 by amasnaou         ###   ########.fr       */
+/*   Created: 2021/11/12 18:34:01 by amasnaou          #+#    #+#             */
+/*   Updated: 2021/11/12 18:34:03 by amasnaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
 
-#include "./SRCS/libft.h"
-
-# include<stdarg.h>
-# include<stdio.h>
-# include<stdlib.h>
-# include<unistd.h>
-# include<string.h>
-# include<strings.h>
-
-int	ft_printf(const char *format, ...);
-
-#endif
+	i = -1;
+	if (!s)
+		return ((void)0);
+	while (s[++i])
+		write (fd, &s[i], 1);
+}
