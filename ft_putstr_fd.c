@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amasnaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 22:20:16 by amasnaou          #+#    #+#             */
-/*   Updated: 2021/11/12 22:20:17 by amasnaou         ###   ########.fr       */
+/*   Created: 2021/11/12 18:34:01 by amasnaou          #+#    #+#             */
+/*   Updated: 2021/11/12 18:34:03 by amasnaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putstr_fd(char *s, int fd, int *count)
 {
-	char	nb_car;
+	int	i;
 
-	if (n == -2147483648)
-		write (fd, "-2147483648", 11);
-	else if (n == 2147483647)
-		write (fd, "2147483647", 10);
-	else if (n < 0)
-	{
-		write (fd, "-", 1);
-		ft_putnbr_fd(-n, fd);
-	}
-	else if (n < 10)
-	{
-		nb_car = n + 48;
-		write (fd, &nb_car, 1);
-	}
+	i = -1;
+	if (!s)
+		*count += write (fd, "(null)", 6);
 	else
-	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
-	}
+		while (s[++i])
+			*count += write (fd, &s[i], 1);
 }

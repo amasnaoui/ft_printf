@@ -1,17 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_print_hexa.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amasnaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 18:31:26 by amasnaou          #+#    #+#             */
-/*   Updated: 2021/11/12 18:31:31 by amasnaou         ###   ########.fr       */
+/*   Created: 2021/11/30 11:55:30 by amasnaou          #+#    #+#             */
+/*   Updated: 2021/11/30 11:55:32 by amasnaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_print_hexa(unsigned int num, char hex, int *count)
 {
-	write (fd, &c, 1);
+	char	*c;
+	if (hex == 'x')
+		c = "0123456789abcdef";
+	else
+		c = "0123456789ABCDEF";
+	if (num < 0)
+	{
+		*count += write (1, "-", 1);
+		ft_print_hexa(-num,hex, count);
+	}
+	else if (num < 16)
+	{
+		*count += write (1, &c[num], 1);
+	}
+	else
+	{
+		ft_print_hexa(num / 16, hex, count);
+		ft_print_hexa(num % 16, hex, count);
+	}
 }

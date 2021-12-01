@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amasnaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 18:34:01 by amasnaou          #+#    #+#             */
-/*   Updated: 2021/11/12 18:34:03 by amasnaou         ###   ########.fr       */
+/*   Created: 2021/11/12 18:31:26 by amasnaou          #+#    #+#             */
+/*   Updated: 2021/11/12 18:31:31 by amasnaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putchar_fd(char c, int fd, int *count)
 {
-	int	i;
-
-	i = -1;
-	if (!s)
-		return ((void)0);
-	while (s[++i])
-		write (fd, &s[i], 1);
+	*count += write (fd, &c, 1);
 }
