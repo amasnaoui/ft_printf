@@ -44,12 +44,17 @@ int	ft_printf(const char *format, ...)
 		}
 		else if (format[i] == '%' && format[i + 1] == 'x')
 		{
-			ft_print_hexa(va_arg(args,int),'x',&count);
+			ft_print_hexa(va_arg(args,unsigned int),'x',&count);
 			i++;
 		}
 		else if (format[i] == '%' && format[i + 1] == 'X')
 		{
-			ft_print_hexa(va_arg(args,int),'X',&count);
+			ft_print_hexa(va_arg(args,unsigned int),'X',&count);
+			i++;
+		}
+		else if (format[i] == '%' && format[i + 1] == 'p')
+		{
+			ft_print_address(va_arg(args,unsigned long),&count);
 			i++;
 		}
 		else
@@ -64,8 +69,20 @@ int	ft_printf(const char *format, ...)
 // 	char c = 'p';
 // 	char s[10] = "strings";
 // 	int h = 56468;
-// 	//char *p = &c;
-// 	ft_printf(" this is char %c,\n and this is string %s,\n and this is percent %%,\n and this is a number %d\n and this is a lower hexa %x,\n and this is a upper hexa %X\n\n\n",c,s,h,255,255);
-// 	printf(" this is char %c,\n and this is string %s,\n and this is percent %%,\n and this is a number %d\n and this is a lower hexa %x,\n and this is a upper hexa %X\n",c,s,h,255,255);
+// 	char *p = &c;
+// 	ft_printf(" this is char %c,\n and this is string %s,\n and this is percent %%,\n and this is a number %d\n and this is a lower hexa %x,\n and this is a upper hexa %X\n and this is address %p\n\n",c,s,h,255,255,p);
+// 	printf(" this is char %c,\n and this is string %s,\n and this is percent %%,\n and this is a number %d\n and this is a lower hexa %x,\n and this is a upper hexa %X\n and this is address %p\n\n",c,s,h,255,255,p);
 // 	return 0;
+	
+// }
+
+// #include <limits.h>
+
+// int main()
+// {
+// 	printf(" %p %p \n", -9223372036854775808, 9223372036854775807);
+//     printf(" %p %p \n new", -9223372036854775808, 9223372036854775807);
+//     //printf(" %ld %ld ", LONG_MIN, LONG_MAX);
+
+//     return 0;
 // }
