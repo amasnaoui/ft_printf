@@ -57,6 +57,11 @@ int	ft_printf(const char *format, ...)
 			ft_print_address(va_arg(args,unsigned long),&count);
 			i++;
 		}
+		else if (format[i] == '%' && format[i + 1] == 'u')
+		{
+			ft_putunsigned(va_arg(args,unsigned int),&count);
+			i++;
+		}
 		else
 			ft_putchar_fd(format[i],1,&count);
 		i++;
@@ -74,15 +79,4 @@ int	ft_printf(const char *format, ...)
 // 	printf(" this is char %c,\n and this is string %s,\n and this is percent %%,\n and this is a number %d\n and this is a lower hexa %x,\n and this is a upper hexa %X\n and this is address %p\n\n",c,s,h,255,255,p);
 // 	return 0;
 	
-// }
-
-// #include <limits.h>
-
-// int main()
-// {
-// 	printf(" %p %p \n", -9223372036854775808, 9223372036854775807);
-//     printf(" %p %p \n new", -9223372036854775808, 9223372036854775807);
-//     //printf(" %ld %ld ", LONG_MIN, LONG_MAX);
-
-//     return 0;
 // }

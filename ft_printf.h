@@ -27,6 +27,7 @@ void	ft_putnbr_fd(int n, int fd, int *count);
 void	ft_print_hexa(unsigned int num, char hex, int *count);
 void	ft_print_address(unsigned long adr,int *count);
 void	ft_print_hexa_add(unsigned long num, int *count);
+void	ft_putunsigned(unsigned int n, int *count);
 
 
 #endif
