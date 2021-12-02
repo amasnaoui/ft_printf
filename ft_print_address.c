@@ -17,17 +17,16 @@ void	ft_print_hexa_add(unsigned long num, int *count)
 
 	c = "0123456789abcdef";
 	if (num < 16)
-	{
 		*count += write (1, &c[num], 1);
-	}
 	else
 	{
 		ft_print_hexa_add(num / 16, count);
 		ft_print_hexa_add(num % 16, count);
 	}
 }
-void	ft_print_address(unsigned long adr,int *count)
+
+void	ft_print_address(unsigned long adr, int *count)
 {
 	*count += write (1, "0x", 2);
-	ft_print_hexa_add(adr,count);
+	ft_print_hexa_add(adr, count);
 }

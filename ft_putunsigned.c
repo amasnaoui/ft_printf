@@ -26,4 +26,3 @@ void	ft_putunsigned(unsigned int n, int *count)
 		ft_putnbr_fd(n % 10, 1, count);
 	}
 }
-

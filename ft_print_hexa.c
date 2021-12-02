@@ -14,6 +14,7 @@
 void	ft_print_hexa(unsigned int num, char hex, int *count)
 {
 	char	*c;
+
 	if (hex == 'x')
 		c = "0123456789abcdef";
 	else
