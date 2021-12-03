@@ -11,23 +11,23 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	ft_print(va_list args, const char *format, int *i, int *count)
+void	ft_print(va_list args, const char *format, int i, int *count)
 {
-	if (format[*i + 1] == '%')
+	if (format[i + 1] == '%')
 		ft_putchar_fd('%', 1, count);
-	else if (format[*i + 1] == 'c')
+	else if (format[i + 1] == 'c')
 		ft_putchar_fd(va_arg(args, int), 1, count);
-	else if (format[*i + 1] == 's')
+	else if (format[i + 1] == 's')
 		ft_putstr_fd(va_arg(args, char *), 1, count);
-	else if (format[*i + 1] == 'd' || format[*i + 1] == 'i')
+	else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 		ft_putnbr_fd(va_arg(args, int), 1, count);
-	else if (format[*i + 1] == 'x')
+	else if (format[i + 1] == 'x')
 		ft_print_hexa(va_arg(args, unsigned int), 'x', count);
-	else if (format[*i + 1] == 'X')
+	else if (format[i + 1] == 'X')
 		ft_print_hexa(va_arg(args, unsigned int), 'X', count);
-	else if (format[*i + 1] == 'p')
+	else if (format[i + 1] == 'p')
 		ft_print_address(va_arg(args, unsigned long), count);
-	else if (format[*i + 1] == 'u')
+	else if (format[i + 1] == 'u')
 		ft_putunsigned(va_arg(args, unsigned int), count);
 }
 
@@ -44,7 +44,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			ft_print(args, format, &i, &count);
+			ft_print(args, format, i, &count);
 			i++;
 		}
 		else

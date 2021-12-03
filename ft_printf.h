@@ -18,7 +18,7 @@
 # include<unistd.h>
 
 int		ft_printf(const char *format, ...);
-void	ft_print(va_list args, const char *format, int *i, int *count);
+void	ft_print(va_list args, const char *format, int i, int *count);
 void	ft_putchar_fd(char c, int fd, int *count);
 void	ft_putstr_fd(char *s, int fd, int *count);
 void	ft_putnbr_fd(int n, int fd, int *count);
